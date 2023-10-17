@@ -1,9 +1,12 @@
+import Navbar from "./components/Navbar";
 import "./index.css";
 
 function App() {
   return (
-    <div className="bg-red-500 text-blue-50 text-5xl">
-      <section>Hero</section>
+    <div>
+      <section>
+        <Navbar />
+      </section>
       <section>Parallax</section>
       <section>Services</section>
       <section>Parallax</section>
