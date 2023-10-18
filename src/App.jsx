@@ -1,3 +1,4 @@
+import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import "./index.css";
 
@@ -6,6 +7,7 @@ function App() {
     <div>
       <section id="Home">
         <Navbar />
+        <Hero />
       </section>
       <section id="Services">Parallax</section>
       <section>Services</section>
