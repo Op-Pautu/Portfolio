@@ -32,7 +32,7 @@ const Sidebar = () => {
     >
       <motion.div
         variants={variants}
-        className="z-999 fixed top-0 left-0 bottom-0 w-[400px] bg-white"
+        className="fixed top-0 left-0 bottom-0 w-[400px] bg-white z-[999]"
       >
         <Links />
       </motion.div>
