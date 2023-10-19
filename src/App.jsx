@@ -1,6 +1,7 @@
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Parallax from "./components/Parallax";
+import Services from "./components/Services";
 import "./index.css";
 
 function App() {
@@ -13,7 +14,9 @@ function App() {
       <section id="Services">
         <Parallax type="services" />
       </section>
-      <section>Services</section>
+      <section>
+        <Services />
+      </section>
       <section id="Portfolio">
         <Parallax type="portfolio" />
       </section>
