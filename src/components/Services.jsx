@@ -1,14 +1,41 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+
+const variants = {
+  initial: {
+    x: -500,
+    opacity: 0,
+    y: 100,
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      staggerChildren: 0.1,
+    },
+  },
+};
 
 const Services = () => {
+  const ref = useRef();
+
+  const isInView = useInView(ref, { margin: "-100px" });
   return (
     <motion.div
       id="services"
+      variants={variants}
+      initial="initial"
+      // whileInView="animate"
+      ref={ref}
+      animate={isInView && "animate"}
       className="bg-[linear-gradient(180deg, _#0c0c1d, #111132)] h-[100%] flex flex-col justify-between"
     >
       <motion.div
         className="flex-1 self-end flex items-center gap-[20px]"
         id="textContainer"
+        variants={variants}
       >
         <p className="font-[200px] text-[20px] text-gray-500 text-right">
           I focus on helping your brand grow
@@ -19,6 +46,7 @@ const Services = () => {
       <motion.div
         className="flex-[2_2_0%] flex flex-col items-center"
         id="titleContainer"
+        variants={variants}
       >
         <div className="flex gap-[50px] items-center" id="title">
           <img
@@ -26,13 +54,14 @@ const Services = () => {
             alt=""
             className="w-[300px] h-[100px] rounded-[50px] object-cover"
           />
-          <h1 className="text-[96px] font-[100px]">
-            <b>Unique</b> Ideas
+          <h1 className="text-[96px] font-[100]">
+            <motion.b whileHover={{ color: "orange" }}>Unique</motion.b> Ideas
           </h1>
         </div>
         <div className="flex gap-[50px] items-center" id="title">
-          <h1 className="text-[96px] font-[100px]">
-            <b>For Your</b> Business.
+          <h1 className="text-[96px] font-[100]">
+            <motion.b whileHover={{ color: "orange" }}>For Your</motion.b>{" "}
+            Business.
           </h1>
           <button className="text-black w-[300px] h-[100px] rounded-[50px] bg-[#ffa500] border-none text-[24px] cursor-pointer">
             WHAT I DO?
@@ -40,8 +69,9 @@ const Services = () => {
         </div>
       </motion.div>
       <motion.div
-        className="flex-[2_2_0%] flex"
-        id="listContainer max-w-[1366px] m-auto"
+        className="flex-[2_2_0%] flex max-w-[1366px] m-auto"
+        variants={variants}
+        id="listContainer"
       >
         <motion.div
           whileHover={{ background: "lightgray", color: "black" }}
