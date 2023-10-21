@@ -1,6 +1,7 @@
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Parallax from "./components/Parallax";
+import Portfolio from "./components/Portfolio";
 import Services from "./components/Services";
 import "./index.css";
 
@@ -20,9 +21,10 @@ function App() {
       <section id="Portfolio">
         <Parallax type="portfolio" />
       </section>
-      <section>Portfolio1</section>
-      <section>Portfolio2</section>
-      <section>Portfolio3</section>
+      <section>
+        <Portfolio />
+      </section>
+
       <section id="Contact">Contact</section>
     </div>
   );
