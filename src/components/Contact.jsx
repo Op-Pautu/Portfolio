@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import ContactSvg from "./ContactSvg";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
+import toast, { Toaster } from "react-hot-toast";
 
 const variants = {
   initial: {
@@ -17,6 +20,26 @@ const variants = {
 };
 
 const Contact = () => {
+  const formRef = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_SERVICE_ID,
+        import.meta.env.VITE_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_PUBLIC_KEY
+      )
+      .then(
+        () => {
+          toast.success("Email successfully sent");
+        },
+        () => {
+          toast.error("Something went wrong");
+        }
+      );
+  };
+
   return (
     <motion.div
       id="contact"
@@ -45,6 +68,8 @@ const Contact = () => {
       <div id="formContainer" className="flex-1 relative">
         <ContactSvg />
         <motion.form
+          ref={formRef}
+          onSubmit={sendEmail}
           className="flex flex-col gap-[20px]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -54,22 +79,26 @@ const Contact = () => {
             className="p-[20px] bg-transparent border border-solid border-white text-white rounded-[5px]"
             type="text"
             required
+            name="from_name"
             placeholder="Name"
           />
           <input
             className="p-[20px] bg-transparent border border-solid border-white text-white rounded-[5px]"
             type="email"
             required
+            name="email"
             placeholder="Email"
           />
           <textarea
             className="p-[20px] bg-transparent border border-solid border-white text-white rounded-[5px]"
             rows="8"
             placeholder="Message"
+            name="message"
           />
           <button className="p-[20px] border-none bg-[#ffa500] cursor-pointer text-black font-[500]">
             Send
           </button>
+          <Toaster position="top-right" reverseOrder={false} />
         </motion.form>
       </div>
     </motion.div>
