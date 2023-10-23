@@ -1,4 +1,5 @@
 import Contact from "./components/Contact";
+import Cursor from "./components/Cursor";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Parallax from "./components/Parallax";
@@ -9,6 +10,7 @@ import "./index.css";
 function App() {
   return (
     <div>
+      <Cursor />
       <section id="Home">
         <Navbar />
         <Hero />
