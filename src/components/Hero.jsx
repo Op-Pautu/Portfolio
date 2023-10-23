@@ -46,21 +46,21 @@ const Hero = () => {
     <div className="h-[calc(100vh-100px)] bg-[linear-gradient(180deg,_#0c0c1d,_#111132)] overflow-hidden relative">
       <div className="max-w-[1366px] h-[100%] m-auto" id="wrapper">
         <motion.div
-          className="h-[100%] flex flex-col justify-center gap-10 w-[50%]"
           id="textContainer"
+          className="h-[50%] leading-3 w-full md:h-full md:w-[50%] flex flex-col md:justify-center items-center text-center gap-[20px] md:gap-10"
           variants={textVariants}
           initial="initial"
           animate="animate"
         >
           <motion.h2
-            className="text-[#663399] text-[45px] tracking-[10px]"
+            className="text-[#663399] text-[45px] tracking-[10px] mt-6"
             style={customFontStyle}
             variants={textVariants}
           >
             OP PAUTU
           </motion.h2>
           <motion.h1
-            className="text-[88px] tracking-normal leading-[112px]"
+            className="text-[36px] md:text-[88px] tracking-normal leading-[112px]"
             variants={textVariants}
           >
             Self-Taught Web Developer
@@ -98,10 +98,14 @@ const Hero = () => {
           initial="initial"
           animate="animate"
         >
-          Writer Content Creator Influencer
+          Fullstack Web Developer For You
         </motion.div>
-        <div className="h-[100%] absolute top-0 right-0">
-          <img src="/hero.png" alt="hero" />
+        <div className="h-[50%] w-full md:h-full absolute top-unset bottom-0 md:top-0 md:right-0">
+          <img
+            src="/hero.png"
+            alt="hero"
+            className="w-full h-full object-contain"
+          />
         </div>
       </div>
     </div>

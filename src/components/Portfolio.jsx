@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useMediaQuery } from "@react-hook/media-query";
 
 const items = [
   {
@@ -31,7 +32,7 @@ const items = [
 
 const Single = ({ item }) => {
   const ref = useRef();
-
+  const isSmallScreen = useMediaQuery("only screen and (max-width: 768px)");
   const { scrollYProgress } = useScroll({
     target: ref,
     // offset: ["start start", "end start"],
@@ -47,22 +48,30 @@ const Single = ({ item }) => {
       >
         <div
           id="wrapper"
-          className="max-w-[1366px] h-[100%] m-auto flex gap-[50px] items-center justify-center"
+          className="max-w-[1366px] h-[100%] m-auto flex flex-col md:flex-row gap-[50px] items-center justify-center"
         >
-          <div className="flex-1 h-[50%]" id="imageContainer" ref={ref}>
+          <div
+            className="flex-1 md:h-[50%] w-full max-h-[300px] md:max-h-full"
+            id="imageContainer"
+            ref={ref}
+          >
             <img
               src={item.img}
               alt="image"
-              className="h-[100%] w-[100%] object-cover"
+              className="h-full w-full object-contain md:object-cover"
             />
           </div>
           <motion.div
             id="textContainer"
             style={{ y }}
-            className="flex-1 flex flex-col gap-[30px]"
+            className={`flex-1 flex flex-col gap-[30px] p-[10px] items-center text-center md:p-0 ${
+              isSmallScreen ? "!transform-none" : ""
+            }`}
           >
-            <h2 className="text-[72px]">{item.title}</h2>
-            <p className="text-gray-400 text-[20px]">{item.desc}</p>
+            <h2 className="text-[36px] md:text-[72px]">{item.title}</h2>
+            <p className="text-gray-400 text-[16px] md:text-[20px]">
+              {item.desc}
+            </p>
             <button className="bg-[#ffa500] border-none rounded-[10px] p-[10px] w-[200px] text-black cursor-pointer">
               See Demo
             </button>
@@ -88,7 +97,7 @@ const Portfolio = () => {
     <div id="portfolio" ref={ref} className="relative">
       <div
         id="progress"
-        className="sticky top-0 left-0 pt-[50px] text-center text-[66px] text-[#ffa500]"
+        className="sticky top-0 left-0 pt-[calc(100vh-100px)] md:pt-[50px] text-[24px] text-center md:text-[66px] text-[#ffa500]"
       >
         <h1 className="">Featured Works</h1>
         <motion.div

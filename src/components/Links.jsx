@@ -37,7 +37,7 @@ const Links = () => {
         <motion.a
           href={`#${item}`}
           key={item}
-          className="text-[20px] md:text-[40px] text-center"
+          className="text-[20px] md:text-[40px]"
           variants={itemVariants}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
