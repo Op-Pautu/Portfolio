@@ -9,14 +9,17 @@ import Sidebar from "./Sidebar";
 
 const Navbar = () => {
   return (
-    <div className="h-[100px]">
+    <div className="h-[100px]" id="navbar">
       <Sidebar />
-      <div className="w-[1366px] mx-auto flex items-center justify-between h-[100%]">
+      <div
+        id="wrapper"
+        className="md:w-[1366px] mx-auto flex items-center justify-end p-[20px] md:p-0 md:justify-between h-[100%]"
+      >
         <motion.span
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="font-bold text-3xl"
+          className="font-bold text-3xl hidden md:block"
         >
           Op Pautu
         </motion.span>
