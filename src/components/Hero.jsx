@@ -100,11 +100,11 @@ const Hero = () => {
         >
           Fullstack Web Developer For You
         </motion.div>
-        <div className="h-[50%] w-full md:h-full absolute top-unset bottom-0 md:top-0 md:right-0">
+        <div className="h-[50%] w-full md:w-auto md:h-full absolute top-auto bottom-0 md:top-0 md:right-0 md:bottom-auto">
           <img
             src="/hero.png"
             alt="hero"
-            className="w-full h-full object-contain"
+            className="w-full h-full object-contain md:object-cover"
           />
         </div>
       </div>
